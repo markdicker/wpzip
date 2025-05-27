@@ -38,9 +38,13 @@ function createArchive( archiveName = "release.zip", basePath = "./", targetPath
         {
             ignoreBaseFiles = content.split("\n");
 
+            // console.log( ignoreBaseFiles );
+
             ignoreFiles = ignoreBaseFiles.map( f => {
                 
-                if ( f[0] != '#' )
+                // console.log( f.length );
+
+                if ( f[0] != '#' && f.length > 0 )
                 {
                     if ( f[ f.length-1] == '*' )
                         return path.join( basePath, f );
@@ -70,6 +74,8 @@ function createArchive( archiveName = "release.zip", basePath = "./", targetPath
 
             const files = gl.globSync( path.join( basePath, "**/*" ), { ignore: ignoreFiles } );
 
+            console.log( files );
+
             if ( files.length > 0 )
             {
                 const output = fs.createWriteStream( archiveName );
@@ -83,7 +89,9 @@ function createArchive( archiveName = "release.zip", basePath = "./", targetPath
     
                 files.forEach( f => {
                     let name = path.join( targetPath, f.replace( path.join( basePath, "" ), "" ));
-    
+
+                    console.log( name );
+
                     archive.file( f , { name: name });
                 })
     

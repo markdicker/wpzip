@@ -1,6 +1,6 @@
 {
   "name": "wpzip",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "Creates a theme distribution zip file. Excludes files in .distignore",
   "main": "index.js",
   "scripts": {
